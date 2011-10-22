@@ -31,16 +31,15 @@ var testCount = 0;
 var failedCount = 0;
 for (var i in testFiles) {
 	testCount++;
-	var fileParts = testFiles[i].split(".");
-	fileParts.pop();
-	var moduleName = fileParts.join(".");
+	var moduleName = testFiles[i];
 	var test = require(testFolder + "/" + moduleName);
 	var handlerCallback = function handlerCallback (error) {
 		if (error)
 			sys.puts("Handler error: " + error);
 	}
 	console.log(testFiles[i]);
-	var handler = (test.type == "rss") ?
+	var start = Date.now();
+	var handler = (test.type === "rss") ?
 		new htmlparser.RssHandler(handlerCallback, test.options.handler)
 		:
 		new htmlparser.DefaultHandler(handlerCallback, test.options.handler)
@@ -61,7 +60,9 @@ for (var i in testFiles) {
 		&&
 		sys.inspect(resultChunk, false, null) === sys.inspect(test.expected, false, null)
 		;
-	sys.puts("[" + test.name + "\]: " + (testResult ? "passed" : "FAILED"));
+	var took = Date.now() - start;
+	totalTime += took;
+	sys.puts("[" + test.name + "\]: " + (testResult ? "passed" : "FAILED") + " (took: " + took + "ms)");
 	if (!testResult) {
 		failedCount++;
 		sys.puts("== Complete ==");
@@ -74,3 +75,4 @@ for (var i in testFiles) {
 }
 sys.puts("Total tests: " + testCount);
 sys.puts("Failed tests: " + failedCount);
+sys.puts("Total time: " + totalTime);
