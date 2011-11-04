@@ -66,11 +66,8 @@ for (var i in testFiles) {
 	if(test.type === "event"){
 		resultChunk = test.result;
 	}
-	var testResult =
-		sys.inspect(resultComplete, false, null) === sys.inspect(test.expected, false, null)
-		&&
-		sys.inspect(resultChunk, false, null) === sys.inspect(test.expected, false, null)
-		;
+	var testResult = sys.inspect(resultComplete, false, null) === sys.inspect(test.expected, false, null)
+					&& sys.inspect(resultChunk, false, null) === sys.inspect(test.expected, false, null);
 	var took = Date.now() - start;
 	totalTime += took;
 	sys.puts("[" + test.name + "\]: " + (testResult ? "passed" : "FAILED") + " (took: " + took + "ms)");
