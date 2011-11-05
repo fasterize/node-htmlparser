@@ -2,6 +2,10 @@
 A forgiving HTML/XML/RSS parser written in JS for both the browser and NodeJS (yes, despite the name it works just fine in any modern browser). The parser can handle streams (chunked data) and supports custom handlers for writing custom DOMs/output.
 
 ##Running Tests
+	node tests/00-runtests.js
+
+##How is this different from [node-htmlparser](https://github.com/tautologistics/node-htmlparser)?
+This is a fork of the project above. The main difference is that this is just intended to be used with node. Besides, the code is much better structured, has less duplications and is remarkably faster than the original. 
 
 ###Run tests under node:
 	node runtests.js
