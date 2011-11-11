@@ -26,17 +26,6 @@ View runtests.html in any browser
 	parser.parseComplete(rawHtml);
 	sys.puts(sys.inspect(handler.dom, false, null));
 
-##Usage In Browser
-	var handler = new Tautologistics.NodeHtmlParser.DefaultHandler(function (error, dom) {
-		if (error)
-			[...do something for errors...]
-		else
-			[...parsing done, do something...]
-	});
-	var parser = new Tautologistics.NodeHtmlParser.Parser(handler);
-	parser.parseComplete(document.body.innerHTML);
-	alert(JSON.stringify(handler.dom, null, 2));
-
 ##Example output
 	[ { raw: 'Xyz ', data: 'Xyz ', type: 'text' }
 	, { raw: 'script language= javascript'
