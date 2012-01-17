@@ -162,17 +162,7 @@ becomes:
 	, { raw: 'text', data: 'text', type: 'text' }
 	]
 
-####Example: false
-The following HTML:
-	<link>text</link>
-becomes:
-	[ { raw: 'link'
-	  , data: 'link'
-	  , type: 'tag'
-	  , name: 'link'
-	  , children: [ { raw: 'text', data: 'text', type: 'text' } ]
-	  }
-	]
+Output (simplified):
 
 ##DomUtils
 
