@@ -4,52 +4,23 @@ A forgiving HTML/XML/RSS parser written in JS for both the browser and NodeJS (y
 ##Running Tests
 	node tests/00-runtests.js
 
-##How is this different from [node-htmlparser](https://github.com/tautologistics/node-htmlparser)?
-This is a fork of the project above. The main difference is that this is just intended to be used with node. Besides, the code is much better structured, has less duplications and is remarkably faster than the original. 
+##Usage
 
-###Run tests under node:
-	node runtests.js
-
-###Run tests in browser:
-View runtests.html in any browser
-
-##Usage In Node
-	var htmlparser = require("node-htmlparser");
-	var rawHtml = "Xyz <script language= javascript>var foo = '<<bar>>';< /  script><!--<!-- Waah! -- -->";
-	var handler = new htmlparser.DefaultHandler(function (error, dom) {
-		if (error)
-			[...do something for errors...]
-		else
-			[...parsing done, do something...]
-	});
-	var parser = new htmlparser.Parser(handler);
-	parser.parseComplete(rawHtml);
-	sys.puts(sys.inspect(handler.dom, false, null));
-
-##Example output
-	[ { raw: 'Xyz ', data: 'Xyz ', type: 'text' }
-	, { raw: 'script language= javascript'
-	  , data: 'script language= javascript'
-	  , type: 'script'
-	  , name: 'script'
-	  , attribs: { language: 'javascript' }
-	  , children: 
-	     [ { raw: 'var foo = \'<bar>\';<'
-	       , data: 'var foo = \'<bar>\';<'
-	       , type: 'text'
-	       }
-	     ]
-	  }
-	, { raw: '<!-- Waah! -- '
-	  , data: '<!-- Waah! -- '
-	  , type: 'comment'
-	  }
-	]
-
-##Streaming To Parser
-	while (...) {
-		...
-		parser.parseChunk(chunk);
+```javascript
+var htmlparser = require("htmlparser2");
+var parser = new htmlparser.Parser({
+	onopentag: function(name, attribs){
+		if(name === "script" && attribs["language"] === "javascript"){
+			console.log("JS! Hooray!");
+		}
+	},
+	ontext: function(text){
+		console.log("-->", text);
+	},
+	onclosetag: function(tagname){
+		if(tagname === "script"){
+			console.log("That's it?!");
+		}
 	}
 	parser.done();	
 
@@ -174,3 +145,27 @@ Looking for CSS selectors to search the DOM? Try Node-SoupSelect, a port of Soup
 
 There's also a port of hpricot to NodeJS that uses node-HtmlParser for HTML parsing: http://github.com/silentrob/Apricot
 
+```javascript
+new htmlparser.FeedHandler(function(<error> error, <object> feed){
+    ...
+});
+```
+
+##Performance
+Using a slightly modified version of [node-expat](https://github.com/astro/node-expat)s `bench.js`, I received the following results (on a MacBook (late 2010):
+
+* [htmlparser](https://github.com/tautologistics/node-htmlparser): 51779 el/s
+* [sax.js](https://github.com/isaacs/sax-js): 53169 el/s
+* [node-expat](https://github.com/astro/node-expat): 103388 el/s
+* [htmlparser2](https://github.com/fb55/node-htmlparser): 118614 el/s
+
+The test may be found in `tests/bench.js`.
+
+##How is this different from [node-htmlparser](https://github.com/tautologistics/node-htmlparser)?
+This is a fork of the project above. The main difference is that this is just intended to be used with node (it runs on other platforms using [browserify](https://github.com/substack/node-browserify)). Besides, the code is much better structured, has less duplications and is remarkably faster than the original. 
+
+The parser now provides a callback interface close to [sax.js](https://github.com/isaacs/sax-js) (originally intended for [readabilitySAX](https://github.com/fb55/readabilitysax)). I also fixed a couple of bugs & included some pull requests for the original project (eg. [RDF feed support](https://github.com/tautologistics/node-htmlparser/pull/35)).
+
+The support for location data and verbose output was removed a couple of versions ago. It's still available in the [verbose branch](https://github.com/FB55/node-htmlparser/tree/verbose). 
+
+The `DefaultHandler` and the `RssHandler` were renamed to clarify their purpose (to `DomHandler` and `FeedHandler`). The old names are still available when requiring `htmlparser2`, so your code should work as expected.
