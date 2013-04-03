@@ -9,6 +9,19 @@
     {
       "event": "opentagname",
       "data": [
+        "p"
+      ]
+    },
+    {
+      "event": "opentag",
+      "data": [
+        "p",
+        {}
+      ]
+    },
+    {
+      "event": "opentagname",
+      "data": [
         "script"
       ]
     },
@@ -38,6 +51,12 @@
       "event": "closetag",
       "data": [
         "script"
+      ]
+    },
+    {
+      "event": "closetag",
+      "data": [
+        "p"
       ]
     }
   ]
