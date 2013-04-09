@@ -1,5 +1,4 @@
-#NodeHtmlParser
-A forgiving HTML/XML/RSS parser written in JS for both the browser and NodeJS (yes, despite the name it works just fine in any modern browser). The parser can handle streams (chunked data) and supports custom handlers for writing custom DOMs/output.
+#htmlparser2 [![Build Status](https://secure.travis-ci.org/fb55/htmlparser2.png)](http://travis-ci.org/fb55/htmlparser2)
 
 ##Running Tests
 	node tests/00-runtests.js
@@ -137,11 +136,11 @@ Output (simplified):
 
 ##DomUtils
 
-###TBD (see utils_example.js for now)
+Read more about the parser in the [wiki](https://github.com/fb55/htmlparser2/wiki/Parser-options).
 
 ##Related Projects
 
-Looking for CSS selectors to search the DOM? Try Node-SoupSelect, a port of SoupSelect to NodeJS: http://github.com/harryf/node-soupselect
+The `DomHandler`, while still bundled with this module, was recently moved to it's [own module](https://github.com/fb55/domhandler). Have a look at it for further information.
 
 There's also a port of hpricot to NodeJS that uses node-HtmlParser for HTML parsing: http://github.com/silentrob/Apricot
 
@@ -152,7 +151,7 @@ new htmlparser.FeedHandler(function(<error> error, <object> feed){
 ```
 
 ##Performance
-Using a slightly modified version of [node-expat](https://github.com/astro/node-expat)s `bench.js`, I received the following results (on a MacBook (late 2010):
+Using a modified version of [node-expat](https://github.com/astro/node-expat)'s `bench.js`, I received the following results (on OSX):
 
 * [htmlparser](https://github.com/tautologistics/node-htmlparser): 51779 el/s
 * [sax.js](https://github.com/isaacs/sax-js): 53169 el/s
