@@ -1,7 +1,7 @@
 {
   "name": "htmlparser2",
   "description": "Fast & forgiving HTML/XML/RSS parser",
-  "version": "3.5.0",
+  "version": "3.7.0",
   "author": "Felix Boehm <me@feedic.com>",
   "keywords": [
     "html",
@@ -36,7 +36,11 @@
     "entities": "1.0"
   },
   "devDependencies": {
-    "mocha": "1"
+    "mocha": "1",
+    "mocha-lcov-reporter": "*",
+    "coveralls": "*",
+    "istanbul": "*",
+    "jshint": "2"
   },
   "license": "MIT"
 }
