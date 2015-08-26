@@ -1,9 +1,11 @@
 {
   "name": "Conditional Comment",
   "options": {},
-  "html": "<!--[if IE 8]>coucou<![endif]-->",
+  "html": "<!--[if IE 8]><!-- -->coucou<![endif]-->",
   "expected": [
     { "event": "openconditionalcomment",     "data": [ "[if IE 8]" ] },
+    { "event": "comment", "data": [ " " ] },
+    { "event": "commentend", "data": [] },
     { "event": "text", "data": [ "coucou" ] },
     { "event": "closeconditionalcomment", "data": [ "[endif]" ] } ]
 }
