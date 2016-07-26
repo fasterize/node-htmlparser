@@ -1,0 +1,9 @@
+{
+  "name": "Conditional Comment different syntax",
+  "options": {},
+  "html": "<!--[if !IE 9]>-->coucou<!-- <![endif]-->",
+  "expected": [
+    { "event": "openconditionalcomment",     "data": [ "[if !IE 9]>--" ] },
+    { "event": "text", "data": [ "coucou" ] },
+    { "event": "closeconditionalcomment", "data": [ "-- <![endif]" ] } ]
+}
