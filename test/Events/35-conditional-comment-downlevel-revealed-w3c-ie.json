@@ -1,8 +1,8 @@
 {
-  "name": "Nested Conditional Comment",
+  "name": "Conditional Comment Downlevel-revealed W3C and IE",
   "options": {},
   "html": "<!--[if gt IE 8]><!-->  <link rel=\"stylesheet\" media=\"screen, projection\" type=\"text/css\" href=\"http://www.website.com/_ui/desktop/assets/css/common.css\" /> <!--<![endif]-->",
-  "expected":[ 
+  "expected":[
  { "event": "openconditionalcomment", "data": [ "[if gt IE 8]" ] },
   { "event": "text", "data": [ "<!-->  " ] },
   { "event": "opentagname", "data": [ "link" ] },

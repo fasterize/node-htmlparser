@@ -1,5 +1,5 @@
 {
-  "name": "Conditional Comment different syntax",
+  "name": "Conditional Comment Downlevel-revealed W3C",
   "options": {},
   "html": "<!--[if !IE 9]>-->coucou<!-- <![endif]-->",
   "expected": [
