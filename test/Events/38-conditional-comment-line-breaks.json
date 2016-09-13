@@ -1,0 +1,9 @@
+{
+  "name": "Conditional Comment with line breaks",
+  "options": {},
+  "html": "<!--[if IE 8]>\r\ncoucou\r\n<![endif]-->",
+  "expected": [
+    { "event": "openconditionalcomment", "data": [ "[if IE 8]" ] },
+    { "event": "text", "data": [ "\r\ncoucou\r\n" ] },
+    { "event": "closeconditionalcomment", "data": [ "[endif]" ] } ]
+}
