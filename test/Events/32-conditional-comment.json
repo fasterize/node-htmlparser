@@ -3,9 +3,9 @@
   "options": {},
   "html": "<!--[if IE 8]><!-- -->coucou<![endif]-->",
   "expected": [
-    { "event": "openconditionalcomment",     "data": [ "[if IE 8]" ] },
-    { "event": "comment", "data": [ " " ] },
-    { "event": "commentend", "data": [] },
-    { "event": "text", "data": [ "coucou" ] },
-    { "event": "closeconditionalcomment", "data": [ "[endif]" ] } ]
+    {"event":"comment","data":["[if IE 8]><!-- "]},
+    {"event":"commentend","data":[]},
+    {"event":"text","data":["coucou"]},
+    {"event":"processinginstruction","data":["![endif]--","![endif]--"]}
+  ]
 }

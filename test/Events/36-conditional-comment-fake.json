@@ -3,7 +3,12 @@
   "options": {},
   "html": "<!-- [bouton +1 GOOGLE] Placez cette balise dans la section <head> ou juste avant la balise de fermeture </body> -->",
   "expected":[
-    { "event": "comment", "data": [ "[bouton +1 GOOGLE] Placez cette balise dans la section <head> ou juste avant la balise de fermeture </body> " ] },
-    { "event": "commentend",  "data": [] }
-  ]
+  {
+    "event":"comment",
+    "data":[
+      " [bouton +1 GOOGLE] Placez cette balise dans la section <head> ou juste avant la balise de fermeture </body> "
+    ]
+  },
+  {"event":"commentend","data":[]}
+]
 }
