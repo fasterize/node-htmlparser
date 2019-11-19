@@ -3,11 +3,10 @@
   "options": {},
   "html": "<!--[if IE]><![if IE 9]><![endif]-->hello<!--[if IE]><![endif]><![endif]-->",
   "expected": [
-      { "event": "openconditionalcomment", "data": [ "[if IE]" ] },
-      { "event": "processinginstruction", "data": [ "![if", "![if IE 9]" ] },
-      { "event": "closeconditionalcomment", "data": [ "[endif]" ] },
-      { "event": "text", "data": [ "hello" ] },
-      { "event": "openconditionalcomment", "data": [ "[if IE]" ] },
-      { "event": "processinginstruction", "data": [ "![endif]", "![endif]" ] },
-      { "event": "closeconditionalcomment", "data": [ "[endif]" ] } ]
+    {"event":"comment","data":["[if IE]><![if IE 9]><![endif]"]},
+    {"event":"commentend","data":[]},
+    {"event":"text","data":["hello"]},
+    {"event":"comment","data":["[if IE]><![endif]><![endif]"]},
+    {"event":"commentend","data":[]}
+  ]
 }

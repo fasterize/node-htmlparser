@@ -3,7 +3,10 @@
   "options": {},
   "html": "<!--[if !IE 9]>-->coucou<!-- <![endif]-->",
   "expected": [
-    { "event": "openconditionalcomment",     "data": [ "[if !IE 9]>--" ] },
-    { "event": "text", "data": [ "coucou" ] },
-    { "event": "closeconditionalcomment", "data": [ "-- <![endif]" ] } ]
+      {"event":"comment","data":["[if !IE 9]>"]},
+      {"event":"commentend","data":[]},
+      {"event":"text","data":["coucou"]},
+      {"event":"comment","data":[" <![endif]"]},
+      {"event":"commentend","data":[]}
+    ]
 }
